@@ -6,6 +6,8 @@ const forward= document.getElementById("forward");
 const backward= document.getElementById("backward");
 const docTitle= document.querySelector('.title h1');
 const docArtist= document.querySelector('.artist h2');
+const playlist= document.querySelector('#playlist');
+
 
 player={ playing:false,musicIndex:0};
 let list_songs=[
@@ -36,20 +38,38 @@ let list_songs=[
 	}
 ];
 
+//Load 1st song 
 docTitle.innerText= list_songs[0].title;
 docArtist.innerText= list_songs[0].artist;
 docImage.src=`images/${list_songs[0].image}.jpg`;
 music.src=`music/${list_songs[0].title}.mp3`;
 
 
+//create playlist
+$(document).ready(function() {
+	
+list_songs.forEach((item,index) => {
+	let song= document.createElement('div');
+	song.innerHTML=item.title;
+	song.classList.add("p-3","playlist-item");
+	song.setAttribute("id", `item-${index}`);
+	playlist.append(song);
+	})
+});
+
+//Play song
 function playMusic()
 {
 	if(player.playing === false)
 		{
 		player.playing=true;
+		clearActiveList();
+		let currentSong=document.getElementById(`item-${player.musicIndex}`);
+		console.log(currentSong.innerHTML);
+		currentSong.classList.add('active-song');
 		music.play();
 		docImage.classList.add('animate-image');
-		document.querySelector('.parent-container').classList.add('animate-border');
+		document.querySelector('body').classList.add('animate-border');
 		play.classList.replace('fa-play-circle','fa-pause-circle');
 		}
 
@@ -62,26 +82,66 @@ function playMusic()
 		}
 }
 
+
+
+const songList= document.getElementsByClassName('playlist-item');
+
+$('.playlist').ready(function() {
+
+$('.playlist-item').click(function(event) {
+		
+		clearActiveList();
+
+		//Get music id eg item-n (n is index of music)
+		let songID= $(this).attr('id');
+		songID= songID.split("-");			//Split to get music index of current song
+		songID=songID[1];
+		player.musicIndex=songID;		
+
+		// let playIcon= document.createElement('i');
+		// playIcon.classList.add("fa" ,"fa-play");
+		// $(this).append(playIcon);
+		$(this).addClass('active-song');
+	
+		setMusicIndex(player.musicIndex);		//Set music index to current index
+	
+		player.playing=false;
+		playMusic();
+	});
+
+});	
+
+
+//Clear Active class of all Playlist items
+function clearActiveList(){
+	$('.playlist-item').each(function() {
+		$(this).removeClass('active-song');
+	});
+}
+
+
+//Next Song
 function nextMusic()
 {
 	player.musicIndex+=1;
-	if(player.musicIndex > list_songs.length)
+	if(player.musicIndex > list_songs.length -1)
 	{
 		player.musicIndex=0;
 	}
-	docTitle.innerText= list_songs[player.musicIndex].title;
-	docArtist.innerText= list_songs[player.musicIndex].artist;
-	docImage.src=`images/${list_songs[player.musicIndex].image}.jpg`;
-	music.src=`music/${list_songs[player.musicIndex].title}.mp3`;
+	setMusicIndex(player.musicIndex);
+
 	player.playing=false;
 	playMusic();
 }
 
+
+//Adding Events on Click
 music.addEventListener('ended',nextMusic);
 play.addEventListener("click",playMusic);
 forward.addEventListener("click",nextMusic);
 
 
+//Previous Song
 backward.addEventListener("click",() =>{
 player.musicIndex-=1;
 
@@ -90,11 +150,16 @@ player.musicIndex-=1;
 		player.musicIndex=list_songs.length-1;
 	}
 
-	docTitle.innerText= list_songs[player.musicIndex].title;
-	docArtist.innerText= list_songs[player.musicIndex].artist;
-	docImage.src=`images/${list_songs[player.musicIndex].image}.jpg`;
-	music.src=`music/${list_songs[player.musicIndex].title}.mp3`;
+	setMusicIndex(player.musicIndex);
+
 	player.playing=false;
-playMusic();
+	playMusic();
 
 })
+
+function setMusicIndex(index){
+	docTitle.innerText= list_songs[index].title;
+	docArtist.innerText= list_songs[index].artist;
+	docImage.src=`images/${list_songs[index].image}.jpg`;
+	music.src=`music/${list_songs[index].title}.mp3`;
+}
