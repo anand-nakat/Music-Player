@@ -163,3 +163,41 @@ function setMusicIndex(index){
 	docImage.src=`images/${list_songs[index].image}.jpg`;
 	music.src=`music/${list_songs[index].title}.mp3`;
 }
+
+
+$(window).resize(function(){  
+    
+    /*If width> small-screen then, show filter list
+    Issue addressed:If filter icon is used to close list,then in large screen list is hidden as well...*/
+    if($(window).width() > 768)
+    {
+      console.log('width>700');
+	      $("#playlist").css({
+			position: 'relative',
+			top:'5rem',
+			display: 'inline-flex',
+			height: 'auto',
+			borderRadius:'1.5rem' });
+
+	      // $("#playlist").fadeIn();
+    }
+
+    else{
+    	$("#playlist").css({
+		display: 'none',
+		position: 'fixed',
+		top: '0',
+		right: '0',
+		height: '100%',
+		borderRadius:'0%' });
+    }
+});
+
+
+$("#toggle-menu").click(function(event) {
+	$("#playlist").fadeIn();
+});
+
+$("#playlist-close").click(function(event) {
+	$("#playlist").fadeOut();
+});
