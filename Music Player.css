@@ -10,8 +10,10 @@ html{
 }
 
 body{
-	background-color: #130f40;
+	background: #cc3d00 radial-gradient(circle at 60% 100%,#ffa436 5%,#cc3d00 94%);
+	height: 100vh;
 }
+
 .main{
 	height: 8vh;
 	width: 100%;
@@ -56,12 +58,13 @@ body{
 
 #playlist {
 	width: 30rem;
-	height: auto;
+	height: 40rem;
 	background-color: #fff;
 	font-size: 2.5rem;
 	color: black;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-evenly;
 	position: relative;
 	padding: 1rem;
 	border-radius: 1.5rem;
@@ -121,14 +124,10 @@ body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: black;
+	background-color: #cc3d00;
 	width: 0%;
 	height: 100%;
 	transition: .1s linear all;
-	animation-name: music-background;
-	animation-duration: 30s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
 }
 
 
@@ -191,26 +190,31 @@ body{
 	
 }
 
+	/*#cc3d00 radial-gradient(circle at 60% 100%,#ffa436 5%,#cc3d00 94%);
+ 	radial-gradient(circle at 60% 100%,#74b9ff 5%, #0984e3 94%)
+	radial-gradient(circle at 60% 100%,#a29bfe 5%, #6c5ce7 94%)
+	radial-gradient(circle at 60% 100%,#576574 5%, #222f3e 94%)
+	radial-gradient(circle at 60% 100%,#1dd1a1 5%, #10ac84 94%) */
 
 @keyframes music-background{
 	0%{
-		background-color: #130f40;
+		background-color: #cc3d00;
 		
 	}
 	25%{
 		
-		background-color: #273c75;
+		background-color: #cc3d00;
 	}
 	50%{
-		background-color: #d63031;
+		background-color: #6c5ce7;
 		
 	}
 	75%{
-		background-color: #0984e3;
+		background-color:#222f3e;
 		
 	}
 	100%{
-		background-color: #00b894;
+		background-color: #10ac84 ;
 		
 	}
 	
@@ -218,27 +222,25 @@ body{
 
 @keyframes active-item{
 	0%{
-		color: #130f40;
+		color: #cc3d00;
 		
 	}
 	25%{
 		
-		color: #273c75;
+		color: #0984e3;
 	}
 	50%{
-		color: #d63031;
+		color: #6c5ce7;
 		
 	}
 	75%{
-		color: #0984e3;
+		color: #222f3e;
 		
 	}
 	100%{
-		color: #00b894;
+		color: #10ac84;
 		
 	}
-
-	
 }
 
 @media (max-width: 998px){

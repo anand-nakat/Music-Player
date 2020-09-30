@@ -130,8 +130,7 @@ function playMusic()
 
 		//Start image and background animation
 		docImage.classList.add('animate-image');
-		document.querySelector('body').classList.add('animate-background');
-
+		
 		//Toggle pause/play btn
 		play.classList.replace('fa-play-circle','fa-pause-circle');
 		}
@@ -199,6 +198,7 @@ function nextMusic()
 
 //Adding Events on Click
 music.addEventListener('ended',nextMusic);
+
 play.addEventListener("click",playMusic);
 forward.addEventListener("click",nextMusic);
 
@@ -239,7 +239,7 @@ $(window).resize(function(){
       $("#playlist").css({
 		position: 'relative',
 		display: 'inline-flex',
-		height: 'auto',
+		height: '40rem',
 		borderRadius:'1.5rem' });
 	}
 
