@@ -62,9 +62,7 @@ body{
 	color: black;
 	display: flex;
 	flex-direction: column;
-	align-self: start;
 	position: relative;
-	top: 5rem;
 	padding: 1rem;
 	border-radius: 1.5rem;
 	box-shadow: 0 .2rem 0.5rem 0.2rem black;
