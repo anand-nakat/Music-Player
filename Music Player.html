@@ -21,7 +21,7 @@
 
 <div class="main">
 
-		<h1 style="font-size: 3.5rem; color: white;"> Music Player </h1>
+		<h1 style="font-size: 3.8rem; color: white;"> Music Player </h1>
 
 		<i class="fa fa-bars text-white" id="toggle-menu" style="font-size: 3rem;" aria-hidden="true"></i>
 
@@ -32,11 +32,11 @@
 		<div class="music-container py-3">
 
 			<div class="title">  
-				<h1 style="border-bottom: .2rem solid black"> </h1> 
+				<h1 style="border-bottom: .2rem solid black; font-size: 3.5rem;"> </h1> 
 			</div> 
 			
 			<div class="artist">  
-				<h2 class="text-muted"> </h2> 
+				<h2 class="text-muted" style="font-size: 2.5rem;"> </h2> 
 			</div> 
 
 			<div>
@@ -45,6 +45,18 @@
 
 			<div>
 				<audio id="music"></audio>
+			</div>
+
+
+			<div class="d-flex justify-content-between align-items-center w-100 px-2">
+				<h3 id="current-time"> 0:00 </h3>
+				<h3 id="total-duration"> -- </h3>
+			</div>
+
+			<div id="progress-div">
+				<div id="progress-bar">
+
+				</div>
 			</div>
 
 			<div class="music-controls">

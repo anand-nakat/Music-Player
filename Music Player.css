@@ -10,7 +10,7 @@ html{
 }
 
 body{
-	background-color: #1e272e;
+	background-color: #130f40;
 }
 .main{
 	height: 8vh;
@@ -28,12 +28,10 @@ body{
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	}
+}
 
 #toggle-menu{
 	display: none;
-}
-#toggle-menu:hover{
 	cursor: pointer;
 }
 
@@ -48,45 +46,44 @@ body{
 	border-radius: 2rem;
 	box-shadow: 0 .2rem 0.5rem 0.2rem black;
 	margin-top: 2rem;
-
 }
 
 .music-container .img-fluid{
-border-radius: 50%;
-height: 30rem;
-width: 30rem;
+	border-radius: 50%;
+	height: 30rem;
+	width: 30rem;
 }
 
 #playlist {
 	width: 30rem;
 	height: auto;
 	background-color: #fff;
-	font-size: 2rem;
+	font-size: 2.5rem;
 	color: black;
 	display: flex;
 	flex-direction: column;
 	align-self: start;
 	position: relative;
 	top: 5rem;
-	padding: 1.5rem 0;
+	padding: 1rem;
 	border-radius: 1.5rem;
 	box-shadow: 0 .2rem 0.5rem 0.2rem black;
 }
 
 .playlist-heading h2{
-	letter-spacing: .3rem;
-	font-size: 2.5rem;
+	letter-spacing: 1rem;
+	font-size: 3rem;
 	border-bottom: .2rem solid black;
 	text-align: center;
 }
 
 #playlist-close{
-font-size: 2.5rem;
-font-weight: bold;
-position: relative;
-bottom: .2rem;
-cursor: pointer;
-display: none;
+	font-size: 2.5rem;
+	font-weight: bold;
+	position: relative;
+	bottom: .2rem;
+	cursor: pointer;
+	display: none;
 }
 
 .playlist-item{
@@ -96,20 +93,46 @@ display: none;
 	align-items: center;
 	justify-content: space-between;
 }
+
 .playlist-item:hover{
-cursor: pointer;
-color: black;
+	cursor: pointer;
+	color: black;
 }
 
 .active-song{
 	color: black;
 	border-radius: 1rem;
-	font-size: 2.5rem;
+	font-size: 2.8rem;
+	border: .2rem solid ;
 	animation-name: active-item;
-	animation-duration: 50s;
+	animation-duration: 30s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 }
+
+#progress-div{
+	width: 98%;
+	border: .1rem solid black;
+	height: 1rem;
+	border-radius: 1rem;
+	cursor: pointer;
+	position: relative;
+}
+
+#progress-bar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: black;
+	width: 0%;
+	height: 100%;
+	transition: .1s linear all;
+	animation-name: music-background;
+	animation-duration: 30s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
 
 .music-controls{
 	display: flex;
@@ -139,9 +162,9 @@ color: black;
 	animation-timing-function: linear;
 }
 
-.animate-border{
+.animate-background{
 	animation-name: music-background;
-	animation-duration: 50s;
+	animation-duration: 30s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 }
@@ -173,7 +196,7 @@ color: black;
 
 @keyframes music-background{
 	0%{
-		background-color: #1e272e;
+		background-color: #130f40;
 		
 	}
 	25%{
@@ -196,8 +219,8 @@ color: black;
 }
 
 @keyframes active-item{
-		0%{
-		color: #1e272e;
+	0%{
+		color: #130f40;
 		
 	}
 	25%{
@@ -240,6 +263,11 @@ color: black;
 
 	#playlist{
 		display: none;
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: 100%;
+		border-radius:0%;
 	}
 }
 
