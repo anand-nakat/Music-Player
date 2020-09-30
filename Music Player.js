@@ -238,7 +238,6 @@ $(window).resize(function(){
     {
       $("#playlist").css({
 		position: 'relative',
-		top:'5rem',
 		display: 'inline-flex',
 		height: 'auto',
 		borderRadius:'1.5rem' });
