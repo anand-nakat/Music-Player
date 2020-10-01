@@ -6,5 +6,6 @@ Link: https://anand-nakat.github.io/Music-Player/Music%20Player.html
     <li> Next/Previous </li>
     <li> Music Playlist </li>
     <li> Active Progress Bar </li>
+    <li> Volume Bar </li>
 </ul>
 
