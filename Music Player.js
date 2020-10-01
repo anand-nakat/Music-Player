@@ -9,7 +9,7 @@ const docArtist= document.querySelector('.artist h2');
 const playlist= document.querySelector('#playlist');
 
 
-player={ playing:false,musicIndex:0};
+player={ playing:false,musicIndex:0,isMute:0};
 let list_songs=[
 {
 	title:"Perfect 10",
@@ -39,10 +39,10 @@ let list_songs=[
 ];
 
 //Load 1st song 
-docTitle.innerText= list_songs[0].title;
-docArtist.innerText= list_songs[0].artist;
-docImage.src=`images/${list_songs[0].image}.jpg`;
-music.src=`music/${list_songs[0].title}.mp3`;
+setMusicIndex(0);
+
+//Set initial volume to full
+$("#volume-bar").css('width', '100%');
 
 
 
@@ -109,6 +109,56 @@ $("#progress-div").click(function(event) {
 	//Set new time
 	$(music)[0].currentTime=newTime;		
 	
+});
+
+
+//Volume Bar clicked
+$("#volume-div").click(function(event) {
+	
+	//Get position from left where clicked using event object
+	let clickPosition=event.originalEvent.clientX ; // This position is wrt to window, so we'll also need progress div's position from left
+	let volumeDivPosition=$("#volume-div")[0].offsetLeft;
+	let volumeDivWidth= $("#volume-div").width();
+
+	//subtract both to get click position wrt progress-div and convert to %, by dividing with width of progress-div 
+ 	let progressPercentage= Math.ceil(((clickPosition - volumeDivPosition)/volumeDivWidth)*100);
+ 	$("#volume-bar").css('width', progressPercentage+'%'); //Set volume bar width equal to this %
+
+ 	//If muted and volume is increased, then toggle mute button to unmute button
+ 	if(player.isMute === 1){
+ 		player.isMute=0;
+ 		$("#volume-btn").toggleClass("fa-volume-off fa-volume-up");
+ 	}
+
+ 	//If volume bar is below 2%, then mute
+ 	if(progressPercentage<2){
+ 		player.isMute=1;
+ 		$("#volume-btn").toggleClass("fa-volume-up fa-volume-off");
+ 		$(music)[0].volume= 0;
+ 	}
+ 	else{
+	//Set volume equivalent to the %
+	$(music)[0].volume= (progressPercentage/100);
+	}
+
+});
+
+$("#volume-btn").click(function(event) {
+let volume=$("#volume-btn");
+if(player.isMute === 0){
+	player.isMute=1;
+	$(this).toggleClass("fa-volume-up fa-volume-off");
+	$("#volume-bar").css('width', '0');
+	$(music)[0].volume= 0;
+}
+
+else{
+	player.isMute=0;
+	$(this).toggleClass("fa-volume-off fa-volume-up");
+	$("#volume-bar").css('width', '60%');
+	$(music)[0].volume= 0.6;
+}
+
 });
 
 

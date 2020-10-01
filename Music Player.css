@@ -26,7 +26,7 @@ body{
 }
 .parent-container{
 	width: 100vw;
-	height: 90vh;
+	height: 88vh;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
@@ -44,9 +44,9 @@ body{
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	background-color: #fff;
+	background-color: #f5f6fa;
 	border-radius: 2rem;
-	box-shadow: 0 .2rem 0.5rem 0.2rem black;
+	box-shadow: 0 .2rem 0.5rem 0.2rem #2f3640;
 	margin-top: 2rem;
 }
 
@@ -54,12 +54,13 @@ body{
 	border-radius: 50%;
 	height: 30rem;
 	width: 30rem;
+	box-shadow: 0 .2rem 1rem 0.1rem #2f3640;
 }
 
 #playlist {
 	width: 30rem;
 	height: 40rem;
-	background-color: #fff;
+	background-color: #f5f6fa;
 	font-size: 2.5rem;
 	color: black;
 	display: flex;
@@ -68,7 +69,7 @@ body{
 	position: relative;
 	padding: 1rem;
 	border-radius: 1.5rem;
-	box-shadow: 0 .2rem 0.5rem 0.2rem black;
+	box-shadow: 0 .2rem 0.5rem 0.2rem #2f3640;
 }
 
 .playlist-heading h2{
@@ -89,7 +90,7 @@ body{
 
 .playlist-item{
 	display: flex;
-	color: #4b4d4f;
+	color: #353b48;
 	transition: .05s linear all;
 	align-items: center;
 	justify-content: space-between;
@@ -127,30 +128,65 @@ body{
 	background-color: #cc3d00;
 	width: 0%;
 	height: 100%;
-	transition: .1s linear all;
+	transition: .2s ease-out all;
+	border-radius: 1rem;
 }
 
+
+.control-container{
+	display: flex;
+	justify-content: end;
+	width: 95%;
+	align-items: center;
+}
+
+.control-container .fa{
+	font-size: 2.5rem;
+	color: #1e272e;
+	transition: linear .2s all;
+}
+
+.control-container .fa:hover{
+	cursor: pointer;
+	color: grey;
+	transform: scale(1.1);
+}
 
 .music-controls{
 	display: flex;
-	justify-content: space-between;
-	width: 40%;
+	width: 65%;
 	align-items: center;
-}
-.music-controls .fa{
-	font-size: 2.5rem;
-	transition: linear .2s all;
+	justify-content: space-around;
+
 }
 
 .music-controls #play{
 	font-size: 5.5rem;
 }
 
-.music-controls .fa:hover{
-	cursor: pointer;
-	color: grey;
-	transform: scale(1.1);
+.volume-control{
+	display: flex;
+	align-items: center;
 }
+
+#volume-div{
+	margin-left: .4rem;
+	width: 5rem;
+	height: 1rem;
+	background-color: #ccc2c2;
+	position: relative;
+	border-radius: 1rem;
+	cursor: pointer;
+}
+
+#volume-bar{
+	position: absolute;
+	height: 100%;
+	width: 30%;
+	background-color:#2f3640;
+	border-radius: 1rem;
+}
+
 
 .animate-image{
 	animation-name: rotate-image;
